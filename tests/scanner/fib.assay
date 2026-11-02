@@ -1,0 +1,12 @@
+// The language's signature feature: tests live next to the code.
+fn fib(n) {
+  if (n < 2) { return n; }
+  return fib(n - 1) + fib(n - 2);
+}
+
+test "fib base cases" {
+  expect fib(0) == 0;
+  expect fib(10) == 55;
+}
+
+print fib(20);

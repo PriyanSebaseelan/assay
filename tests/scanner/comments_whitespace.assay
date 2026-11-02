@@ -1,0 +1,6 @@
+// a whole-line comment
+	let	  x   = 1; // trailing comment
+
+
+// ( ) these are not tokens
+y

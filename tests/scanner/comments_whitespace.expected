@@ -1,0 +1,7 @@
+   2 LET           'let'
+   2 IDENTIFIER    'x'
+   2 EQUAL         '='
+   2 NUMBER        '1'
+   2 SEMICOLON     ';'
+   6 IDENTIFIER    'y'
+   7 EOF           ''

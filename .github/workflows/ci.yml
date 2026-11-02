@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler: [gcc, clang]
+    steps:
+      - uses: actions/checkout@v4
+
+      # Sanitizers turn silent memory bugs (out-of-bounds reads, use-after-free,
+      # signed overflow) into loud test failures.
+      - name: Build and test with sanitizers
+        run: make test CC=${{ matrix.compiler }} SANITIZE=1
+
+      - name: Build without sanitizers (warnings are errors)
+        run: make clean && make CC=${{ matrix.compiler }} CFLAGS="-std=c11 -Wall -Wextra -Wpedantic -Wshadow -Werror -O2"

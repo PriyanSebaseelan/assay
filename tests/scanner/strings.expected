@@ -1,0 +1,7 @@
+   1 STRING        '"hello"'
+   1 STRING        '""'
+   2 STRING        '"with spaces and (symbols) + 1"'
+   3 STRING        '"spans
+two lines"'
+   4 IDENTIFIER    'after'
+   5 EOF           ''
