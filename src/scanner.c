@@ -49,21 +49,30 @@ void initScanner(const char* source) {
 }
 
 bool isAtEnd() {
-  return scanner.current == '\0';
+  return *scanner.current == '\0';
 }
 
 char advance() {
   scanner.current++;
-  return scanner.current;
+  return *scanner.current;
 }
 
-Token makeToken(type) {
+Token makeToken(TokenType type) {
   Token token;
   token.type = type;
   token.start = scanner.start;
-  token.end = scanner.current;
-  token.length = line;
+  token.length = (int)(scanner.current - scanner.start);
   token.line = scanner.line;
+  return token;
+}
+
+Token errorToken(const char *message) {
+  Token token;
+  token.type = TOKEN_ERROR;
+  token.start = message;
+  token.length = (int)strlen(message);
+  token.line = scanner.line;
+  return token;
 }
 
 Token scanToken(void) {
