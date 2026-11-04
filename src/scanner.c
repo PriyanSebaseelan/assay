@@ -43,9 +43,27 @@ typedef struct {
 static Scanner scanner;
 
 void initScanner(const char* source) {
-  // TODO(step 1)
-  (void)source;
+  scanner.start = source;
+  scanner.current = source;
   scanner.line = 1;
+}
+
+bool isAtEnd() {
+  return scanner.current == '\0';
+}
+
+char advance() {
+  scanner.current++;
+  return scanner.current;
+}
+
+Token makeToken(type) {
+  Token token;
+  token.type = type;
+  token.start = scanner.start;
+  token.end = scanner.current;
+  token.length = line;
+  token.line = scanner.line;
 }
 
 Token scanToken(void) {
